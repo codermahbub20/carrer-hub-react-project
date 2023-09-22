@@ -6,6 +6,8 @@ const FeaturedJob = () => {
 
     const [jobs, setJobs] = useState([]);
 
+    const [datalength,setDatalength] = useState(4);
+
     useEffect(() => {
         fetch('Jobs.json')
         .then(res => res.json())
@@ -19,9 +21,13 @@ const FeaturedJob = () => {
                 <p className="text-center">Explore thousands of job opportunities with all the information you need. Its your future</p>
                 <div className="grid grid-cols-2">
                 {
-                    jobs.map(job => <Job key={job.id} job={job}></Job>)
+                    jobs.slice(0,datalength).map(job => <Job key={job.id} job={job}></Job>)
                 }
                 </div>
+
+            </div>
+            <div className={datalength === jobs.length && 'hidden' || "flex mt-5 justify-center"}>
+                <button className="btn btn-primary" onClick={() => setDatalength(jobs.length)}>Show All Jobs</button>
             </div>
         </div>
     );

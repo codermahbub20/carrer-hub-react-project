@@ -2,9 +2,10 @@
 
 import { FaLocationArrow } from "react-icons/fa6";
 import { AiFillDollarCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Job = ({ job }) => {
-    const { logo,job_title,company_name,remote_or_onsite,job_type,location,salary } = job;
+    const { id,logo,job_title,company_name,remote_or_onsite,job_type,location,salary } = job;
     return (
 
         <div className="max-w-lg mt-3 p-5 mb-2 bg-white border border-gray-200  rounded-xl dark:bg-gray-800 shadow-xl dark:border-gray-700">
@@ -23,7 +24,10 @@ const Job = ({ job }) => {
                 <h2 className="flex gap-2"><AiFillDollarCircle className="mt-1"></AiFillDollarCircle>{salary}</h2>
             </div>
           
+           <Link to={`/job/${id}`}>
            <button className="btn btn-primary mt-4">View Details</button>
+           </Link>
+
         </div>
 
     );
